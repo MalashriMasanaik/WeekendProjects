@@ -66,9 +66,15 @@ public class LoginController {
 		if (isValidmail) {
 			if(isValidmobileNo){
 				if(isValidUserName){
-					loginService.registerUser(registerEntity);
+					boolean userExist=loginService.registerUser(registerEntity);
+					if(userExist){
+						return new ModelAndView("signUp.jsp", "userExist", registerEntity.getUserName()+"you  have alredy registered");
+					}else{
+						
+						return new ModelAndView("success.jsp", "finalMessage", registerEntity.getUserName());
+					}
 					
-					return new ModelAndView("success.jsp", "finalMessage", registerEntity.getUserName());
+					
 				}
 				else{
 					

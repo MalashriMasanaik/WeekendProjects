@@ -16,10 +16,46 @@ public class RegisterEntity implements Serializable{
 	private BigInteger mobileNo;
 	private String userName;
 	private String userType;
+	private Integer firstTimeUser;
+	private String securePhase;
+	private Integer accountLock;
+	private String password;
 	
   public RegisterEntity() {
 	System.out.println("Created\t"+this.getClass().getSimpleName());
 	 
+}
+
+public Integer getFirstTimeUser() {
+	return firstTimeUser;
+}
+
+public void setFirstTimeUser(Integer firstTimeUser) {
+	this.firstTimeUser = firstTimeUser;
+}
+
+public String getSecurePhase() {
+	return securePhase;
+}
+
+public void setSecurePhase(String securePhase) {
+	this.securePhase = securePhase;
+}
+
+public Integer getAccountLock() {
+	return accountLock;
+}
+
+public void setAccountLock(Integer accountLock) {
+	this.accountLock = accountLock;
+}
+
+public String getPassword() {
+	return password;
+}
+
+public void setPassword(String password) {
+	this.password = password;
 }
 
 public BigInteger getMobileNo() {

@@ -7,6 +7,7 @@
 <h2>Welcome to DigitalPasswordWallet!</h2>
 <form action="signup" method="post">
 <pre>
+<h4><font color="blue">${userExist}</font></h4>
 <h4><font color="red">${email}</font></h4>
 Email Id:<input type="text" name="email" id="email"/>
 

@@ -4,6 +4,6 @@ import com.mala.app.entity.RegisterEntity;
 
 public interface LoginService {
 	
-	public void registerUser(RegisterEntity registerEntity);
+	public boolean registerUser(RegisterEntity registerEntity);
 
 }
