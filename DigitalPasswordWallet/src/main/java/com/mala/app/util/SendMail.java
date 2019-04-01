@@ -53,19 +53,26 @@ public class SendMail {
 		String mailSubject = "Password Reset";
 		String email = registerEntity.getEmail();
 		System.out.println(email);
-
-		MimeMessage mimeMessage = this.mailSource.createMimeMessage();
-		try {
-			mimeMessage.setSubject(mailSubject);
+		String encryptPsw=registerEntity.getPassword();//It will give encrypted psw
+		System.out.println("Encrypted PSW:"+" "+encryptPsw);
+		
 		
 
+		MimeMessage mimeMessage = this.mailSource.createMimeMessage();
+		PasswordMask passwordMask;
+		try {
+			passwordMask = new PasswordMask();
+			String decryptedPsw=passwordMask.decryptPsw(encryptPsw);
+			System.out.println("Decrypted PSW:"+" "+decryptedPsw);
+			
+			mimeMessage.setSubject(mailSubject);
 			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 			helper.setTo(registerEntity.getEmail());
 			
-			 String msg="<html><p>Hi!</p><p>Your password is: "+registerEntity.getPassword()+"</p><a href='http://localhost:8080/DigitalPasswordWallet/changePsw'>Click here for PSW Change</a><p>Thanks</p><p><Digital Wallet Group></p></html>";
-			 String psw=registerEntity.getPassword();
-			 System.out.println(psw);
-			
+			String msg="<html><p>Hi!</p><p>Your password is: "+decryptedPsw+"</p><a href='http://localhost:8080/DigitalPasswordWallet/changePsw'>Here Change your password</a><p>Thanks</p><p>Digital Password Wallet Group</p></html>";
+			 
+
+			// String newMsg="<html><body><form action='changePassword.jsp' method='GET'><p>Hi!</p><p>Your password is: "+decryptedPsw+"</p><a href='http://localhost:8080/DigitalPasswordWallet/changePsw'>Here Change your password</a><p>Thanks</p><p>Digital Password Wallet Group</p><input type='submit' value='submit' name='submit' /></form></body></html>";
 			helper.setText(msg, true);
 			System.out.println("start sending mail");
 			mailSource.send(mimeMessage);

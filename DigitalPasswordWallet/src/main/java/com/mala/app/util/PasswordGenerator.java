@@ -19,7 +19,7 @@ public class PasswordGenerator {
 
     public static String generatePassword(){
     	
-    	int length=15;
+    	int length=8;
     	String pattern=ALPHA_CAPS+ALPHA+SPECIAL_CHARS+NUMERIC;
     	String result="";
     	

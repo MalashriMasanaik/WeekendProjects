@@ -35,7 +35,7 @@ public class LoginServiceImpl implements LoginService {
 		
 		if(userCount == 0){	
 			String unencryptedString=PasswordGenerator.generatePassword();
-			System.out.println("Newly generated Password"+" "+unencryptedString);
+			System.out.println("Newly generated Password without any chrypto"+" "+unencryptedString);
 			
 			registerEntity.setAccountLock(0);
 			registerEntity.setFirstTimeUser(0);
@@ -45,14 +45,14 @@ public class LoginServiceImpl implements LoginService {
 			try {
 				passwordMask = new PasswordMask();
 				String encryptedString=passwordMask.encryptPsw(unencryptedString);
-				System.out.println("Encrypted Password"+" "+encryptedString);
+				//System.out.println("Encrypted Password"+" "+encryptedString);
 				registerEntity.setPassword(encryptedString);
 				
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 			}
 			
-			//sendMail.sendMail(registerEntity);
+			
 			loginRepository.registerUser(registerEntity);
 			sendMail.sendMimeMail(registerEntity);
 			return userExist;

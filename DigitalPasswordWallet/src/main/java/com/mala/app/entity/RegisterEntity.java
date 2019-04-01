@@ -20,6 +20,8 @@ public class RegisterEntity implements Serializable{
 	private String securePhase;
 	private Integer accountLock;
 	private String password;
+	//private String newPassword;
+	
 	
   public RegisterEntity() {
 	System.out.println("Created\t"+this.getClass().getSimpleName());
@@ -94,8 +96,11 @@ public void setUserType(String userType) {
 @Override
 public String toString() {
 	return "RegisterEntity [email=" + email + ", mobileNo=" + mobileNo + ", userName=" + userName + ", userType="
-			+ userType + "]";
+			+ userType + ", firstTimeUser=" + firstTimeUser + ", securePhase=" + securePhase + ", accountLock="
+			+ accountLock + ", password=" + password + "]";
 }
+
+
   
   
 	

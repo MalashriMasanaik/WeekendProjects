@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mala.app.entity.RegisterEntity;
+import com.mala.app.repository.LoginRepository;
 import com.mala.app.service.LoginService;
 import com.mala.app.util.NewValidator;
 
@@ -63,6 +64,8 @@ public class LoginController {
 		boolean isValidmobileNo = newValidator.validatemobileNo(registerEntity);
 		boolean isValidUserName = newValidator.validateUserName(registerEntity);
 		
+		
+		
 		if (isValidmail) {
 			if(isValidmobileNo){
 				if(isValidUserName){
@@ -70,6 +73,7 @@ public class LoginController {
 					if(userExist){
 						return new ModelAndView("signUp.jsp", "userExist", registerEntity.getUserName()+"you  have alredy registered");
 					}else{
+						
 						
 						return new ModelAndView("success.jsp", "finalMessage", registerEntity.getUserName());
 					}

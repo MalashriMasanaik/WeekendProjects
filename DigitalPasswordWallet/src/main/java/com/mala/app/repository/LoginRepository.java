@@ -6,5 +6,7 @@ public interface LoginRepository {
 	
 	public void registerUser(RegisterEntity registerEntity);
 	public Long getUser(String emailId );
+	public RegisterEntity getRegisterEntityByName(String password);
+	public void updateNewPSW(RegisterEntity entity);
 
 }
