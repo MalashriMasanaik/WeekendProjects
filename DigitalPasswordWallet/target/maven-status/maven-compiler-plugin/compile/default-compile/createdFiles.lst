@@ -1,0 +1,12 @@
+com\mala\app\entity\RegisterEntity.class
+com\mala\app\controller\LoginController.class
+com\mala\app\repository\LoginRepository.class
+com\mala\app\util\Validator.class
+com\mala\app\util\PasswordGenerator.class
+com\mala\app\service\LoginService.class
+com\mala\app\repository\LoginRepositoryImpl.class
+com\mala\app\controller\ChangePasswordController.class
+com\mala\app\service\LoginServiceImpl.class
+com\mala\app\util\SendMail.class
+com\mala\app\util\NewValidator.class
+com\mala\app\util\PasswordMask.class

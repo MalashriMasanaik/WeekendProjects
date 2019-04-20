@@ -8,5 +8,5 @@ public interface LoginRepository {
 	public Long getUser(String emailId );
 	public RegisterEntity getRegisterEntityByName(String password);
 	public void updateNewPSW(RegisterEntity entity);
-
+	public RegisterEntity getRegisterEntityBySecurePhase(String securephase);
 }

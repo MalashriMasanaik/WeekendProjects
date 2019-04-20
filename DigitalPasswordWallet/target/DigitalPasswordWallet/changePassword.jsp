@@ -5,12 +5,14 @@
 <html>
 <body>
 	<h2>Change Password</h2>
-	
-	<form action="changePsw">
+
+<h4><font color="red">${wrongPSW}</font></h4>
+<h4><font color="red">${alreadychanged}</font></h4>
+	<form action="setPSW" method="GET">
 		<pre>
 Old Password:<input type="text" name="oldPSW" id="oldPSW" />
-New Password:<input type="text" name="newPSW" id="newPSW" maxlength="8"
-				size="8" /> 
+New Password:<input type="text" name="newPSW" id="newPSW" maxlength="8" size="8" /> 
+<h4><font color="red">${PSWMismatch}</font></h4>
 Confirm Password:<input type="text" name="confirmPSW" id="confirmPSW"
 				maxlength="8" size="8" />
 Secure Phase:<input type="text" name="securePhase" id="securePhase"

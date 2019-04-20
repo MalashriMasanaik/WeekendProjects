@@ -1,5 +1,7 @@
 package com.mala.app.util;
 
+import java.net.URLEncoder;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
@@ -23,7 +25,8 @@ public class SendMail {
 	public SendMail() {
 		System.out.println("created\t" + this.getClass().getSimpleName());
 	}
-
+	
+	
 	public boolean sendMail(RegisterEntity registerEntity) {
 		Boolean mailflag = false;
 		String mailSubject = "Password Reset";
@@ -69,10 +72,16 @@ public class SendMail {
 			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
 			helper.setTo(registerEntity.getEmail());
 			
-			String msg="<html><p>Hi!</p><p>Your password is: "+decryptedPsw+"</p><a href='http://localhost:8080/DigitalPasswordWallet/changePsw'>Here Change your password</a><p>Thanks</p><p>Digital Password Wallet Group</p></html>";
-			 
-
-			// String newMsg="<html><body><form action='changePassword.jsp' method='GET'><p>Hi!</p><p>Your password is: "+decryptedPsw+"</p><a href='http://localhost:8080/DigitalPasswordWallet/changePsw'>Here Change your password</a><p>Thanks</p><p>Digital Password Wallet Group</p><input type='submit' value='submit' name='submit' /></form></body></html>";
+			//Here i have started new changes
+			String name=registerEntity.getUserName();
+			System.out.println("User name:"+name);
+			//The below one works
+			//String msg="<html><p>Hi!</p><p>Your password is: "+decryptedPsw+"</p><p>Your UserName is:"+name+"</p><a href='http://localhost:8080/DigitalPasswordWallet/changePsw?name=${"+name+"}'>Here Change your password</a><p>Thanks</p><p>Digital Password Wallet Group</p></html>";
+			String msg="<html><p>Hi!</p><p>Your password is: "+decryptedPsw+"</p><p>Your UserName is:"+name+"</p><a href='http://localhost:8080/DigitalPasswordWallet/changePsw?name="+name+"'>Here Change your password</a><p>Thanks</p><p>Digital Password Wallet Group</p></html>";
+			//String msg="<html><p>Hi!</p><p>Your password is: "+decryptedPsw+"</p><a href='http://localhost:8080/DigitalPasswordWallet/changePsw?name='"+URLEncoder.encode(name, "UTF-8")+">Here Change your password</a><p>Thanks</p><p>Digital Password Wallet Group</p></html>";
+			
+			//this is original line
+			//String msg="<html><p>Hi!</p><p>Your password is: "+decryptedPsw+"</p><a href='http://localhost:8080/DigitalPasswordWallet/changePsw>Here Change your password</a><p>Thanks</p><p>Digital Password Wallet Group</p></html>";		
 			helper.setText(msg, true);
 			System.out.println("start sending mail");
 			mailSource.send(mimeMessage);

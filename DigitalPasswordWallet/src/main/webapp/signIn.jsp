@@ -4,14 +4,15 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<h2>Login to Digital PSW wallet</h2>
-	<h1>${user}you have successfully changed psw! Please login</h1>
 	<form action="signIn" method="post">
 		<pre>
-UserName:<input type="text" name="Uname" id="Uname" />
-Password:<input type="text" name="PSW" id="PSW" maxlength="8" size="8" /> 
-<input type="submit" value="submit" name="submit" /> <input
-				type="reset" value="clear" name="clear" />
+<h4><font color="red">${useraname}</font></h4>
+
+UserName:<input type="text" name="Uname" id="Uname"/>
+<h4><font color="red">${password}</font></h4>
+Password:<input type="password" name="PSW" id="PSW" maxlength="8" size="8" /> 
+<input type="submit" value="Submit" name="Submit" /> <input
+				type="reset" value="Clear" name="Clear" />
 </pre>
 	</form>
 </body>

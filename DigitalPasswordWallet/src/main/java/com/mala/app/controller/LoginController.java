@@ -1,5 +1,7 @@
 package com.mala.app.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,12 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mala.app.entity.RegisterEntity;
-import com.mala.app.repository.LoginRepository;
 import com.mala.app.service.LoginService;
 import com.mala.app.util.NewValidator;
 
 @Controller
 public class LoginController {
+	
+	//Logger logger=LoggerFactory.getLogger(LoginController.class);
+	
 	
 	@Autowired
 	private LoginService loginService;
@@ -23,6 +27,7 @@ public class LoginController {
 	
 	public LoginController() {
 		System.out.println("Created\t"+this.getClass().getSimpleName());
+		//logger.info("Created \t " +this.getClass().getSimpleName());
 	}
 
 	/*//@RequestMapping(value="/signup",method=RequestMethod.POST)
@@ -59,6 +64,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/signup",method=RequestMethod.POST)
 	public ModelAndView  registerUser1(RegisterEntity registerEntity){
+		//logger.info("Inside registerUser() of LoginController");
 		System.out.println("Inside registerUser() of LoginController");
 		boolean isValidmail = newValidator.validEmail(registerEntity);
 		boolean isValidmobileNo = newValidator.validatemobileNo(registerEntity);

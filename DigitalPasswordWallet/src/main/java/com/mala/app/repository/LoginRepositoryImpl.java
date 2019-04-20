@@ -25,6 +25,9 @@ public class LoginRepositoryImpl implements LoginRepository {
 
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
+		
+		
+		
 		try {
 			session.save(registerEntity);
 
@@ -61,6 +64,8 @@ public class LoginRepositoryImpl implements LoginRepository {
 
 	
 	
+	
+	
 	@Override
 	public RegisterEntity getRegisterEntityByName(String password) {
 		System.out.println("psw" + " " + password);
@@ -73,8 +78,8 @@ public class LoginRepositoryImpl implements LoginRepository {
 			Query query = session.createQuery(hql);
 			query.setParameter("psw", password);
 			RegisterEntity entity = (RegisterEntity) query.uniqueResult();
-			System.out.println("Repository entity details"+" "+entity.toString());
-			System.out.println(entity.getUserName());
+			//System.out.println("Repository entity details"+" "+entity.toString());
+			//System.out.println(entity.getUserName());
 			return entity;
 		} catch (Exception exp) {
 			System.out.println(exp.getMessage());
@@ -128,4 +133,27 @@ public void updateNewPSW(RegisterEntity entity) {
 
 	
 }
+
+@Override
+public RegisterEntity getRegisterEntityBySecurePhase(String securePhase) {
+	System.out.println("securephase" + " " + securePhase);
+	Session session = sessionFactory.openSession();
+
+	try {
+
+		String hql = "from RegisterEntity reg where reg.securePhase=:scr";
+		Query query = session.createQuery(hql);
+		query.setParameter("scr", securePhase);
+		RegisterEntity entity = (RegisterEntity) query.uniqueResult();
+		return entity;
+	} catch (Exception exp) {
+		System.out.println(exp.getMessage());
+		exp.printStackTrace();
+		return null;
+	} finally {
+
+		session.close();
+	}
+}
+
 }

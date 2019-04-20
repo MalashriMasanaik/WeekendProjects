@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<h2>Login to Digital PSW wallet</h2>
-	<h1>${user}you have successfully changed psw! Please login</h1>
+	<!-- <h2>Login to Digital PSW wallet</h2> -->
+	<h1>you have successfully changed your psw! Please login</h1>
 	<form action="signIn" method="post">
 		<pre>
 UserName:<input type="text" name="Uname" id="Uname" />

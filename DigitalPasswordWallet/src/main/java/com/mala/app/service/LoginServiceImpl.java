@@ -55,6 +55,7 @@ public class LoginServiceImpl implements LoginService {
 			
 			loginRepository.registerUser(registerEntity);
 			sendMail.sendMimeMail(registerEntity);
+			
 			return userExist;
 			
 		
